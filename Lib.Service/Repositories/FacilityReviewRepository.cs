@@ -1,5 +1,14 @@
 ﻿using System;
+using System.Linq;
+using Lib.Common;
+using Lib.Common.Helpers;
+using Lib.Data.DataContext;
+using Lib.Data.Entity;
+using Lib.Repository.Dto;
+using Lib.Repository.Dto.Parameters;
+using Lib.Repository.Dto.Results;
 using Lib.Repository.Repositories.IRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lib.Repository.Repositories
 {
@@ -17,7 +26,7 @@ namespace Lib.Repository.Repositories
         /// </summary>
         /// <param name="healthFacilityId"></param>
         /// <returns></returns>
-        public HealthFacilityReviewsViewModel GetByHealthFacilityId(string healthFacilityId)
+        public HealthFacilityReviewsDto GetByHealthFacilityId(string healthFacilityId)
         {
             var data = _db.HealthFacilities.Include(x => x.FacilityReviews)
                 .FirstOrDefault(x => x.Id.ToString().ToLower().Equals(healthFacilityId.ToLower()));
@@ -32,7 +41,7 @@ namespace Lib.Repository.Repositories
                         1);
             }
 
-            return new HealthFacilityReviewsViewModel()
+            return new HealthFacilityReviewsDto()
             {
                 HealthFacility = data,
                 AverageRating = averageRating,
@@ -63,7 +72,7 @@ namespace Lib.Repository.Repositories
             var healthFacility =
                 _db.HealthFacilities.FirstOrDefault(x => x.Id.ToString().ToLower().Equals(healthFacilityId.ToLower()));
             if (healthFacility == null)
-                throw new AppException(StatusMsg.ObjectNotFound);
+                throw new AppException(AppStatusMessage.ObjectNotFound);
             model.HealthFacility = healthFacility;
             model.CreatedDate = DateTime.Now;
             model.UpdatedDate = DateTime.Now;

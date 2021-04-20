@@ -1,4 +1,6 @@
-﻿using Lib.Repository.Repositories.IRepository;
+﻿using Lib.Data.DataContext;
+using Lib.Data.Entity;
+using Lib.Repository.Repositories.IRepository;
 
 namespace Lib.Repository.Repositories
 {

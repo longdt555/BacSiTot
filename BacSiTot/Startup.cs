@@ -7,6 +7,7 @@ using BacSiTot.Helpers;
 using Lib.Common.Helpers;
 using Lib.Data.DataContext;
 using Lib.Repository.Repositories;
+using Lib.Repository.Repositories.IRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

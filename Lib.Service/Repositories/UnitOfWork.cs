@@ -1,4 +1,5 @@
-﻿using Lib.Repository.Repositories.IRepository;
+﻿using Lib.Data.DataContext;
+using Lib.Repository.Repositories.IRepository;
 
 namespace Lib.Repository.Repositories
 {
@@ -10,7 +11,6 @@ namespace Lib.Repository.Repositories
         {
             _db = db;
             FacilityReview = new FacilityReviewRepository(_db);
-            User = new UserRepository(_db);
             HealthcareFacility = new HealthFacilityRepository(_db);
             HealthFacilityService = new HealthFacilityServiceRepository(_db);
             Diseases = new DiseasesRepository(_db);
@@ -19,7 +19,6 @@ namespace Lib.Repository.Repositories
 
         #region
 
-        public IUserRepository User { get; private set; }
         public IHealthFacilityRepository HealthcareFacility { get; private set; }
         public IFacilityReviewRepository FacilityReview { get; private set; }
         public IHealthFacilityServiceRepository HealthFacilityService { get; private set; }

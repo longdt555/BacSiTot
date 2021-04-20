@@ -10,8 +10,10 @@
 
         #endregion [Success]
 
-        #region [Invalid]
+        #region [ERROR]
 
-        #endregion [Invalid]
+        public static string ObjectNotFound = "ERROR.OBJECT_NOT_FOUND";
+
+        #endregion [ERROR]
     }
 }

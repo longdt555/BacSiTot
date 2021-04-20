@@ -1,6 +1,8 @@
-﻿namespace Lib.Repository.Dto
+﻿using Lib.Data.Entity;
+
+namespace Lib.Repository.Dto
 {
-    public class HealthFacilityServiceViewModel:BaseImpactModel
+    public class HealthFacilityServiceDto:BaseImpactModel
     {
         public string Name { get; set; }
         public string Description { get; set; }

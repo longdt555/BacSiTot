@@ -12,18 +12,7 @@ namespace Lib.Data.Entity
         public string Age { get; set; }
         public string TimeVisited { get; set; }
         public bool RecommendUsing { get; set; }
-
-        public string RecommendUsingStr
-        {
-            get
-            {
-                return RecommendUsing switch
-                {
-                    true => "Khuyên dùng",
-                    false => "Không khuyên dùng"
-                };
-            }
-        }
+        public string RecommendUsingStr => RecommendUsing ? "Khuyên dùng" : "Không khuyên dùng";
         public float Question1Score { get; set; } = 0;
         public float Question2Score { get; set; } = 0;
         public float Question3Score { get; set; } = 0;

@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Lib.Data.DataContext;
+using Lib.Data.Entity;
+using Lib.Repository.Dto;
 using Lib.Repository.Repositories.IRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lib.Repository.Repositories
 {
@@ -13,7 +18,7 @@ namespace Lib.Repository.Repositories
             _db = db;
         }
 
-        public HealthFacilityViewModel GetById(Guid id)
+        public HealthFacilityDto GetById(Guid id)
         {
             var data = _db.HealthFacilities
                 .Include(x => x.FacilityReviews)
@@ -21,7 +26,7 @@ namespace Lib.Repository.Repositories
                 .FirstOrDefault(x => x.Id.Equals(id));
 
             return data != null
-                ? new HealthFacilityViewModel()
+                ? new HealthFacilityDto()
                 {
                     FacilityType = data.HealthFacilityTypes.FirstOrDefault()?.FacilityType,
                     HealthFacility = data,
@@ -48,14 +53,14 @@ namespace Lib.Repository.Repositories
                 : null;
         }
 
-        public IEnumerable<HealthFacilityViewModel> GetTopHealthFacilityByAverageRating(int take, Guid healthFacilityType)
+        public IEnumerable<HealthFacilityDto> GetTopHealthFacilityByAverageRating(int take, Guid healthFacilityType)
         {
 
             var data = _db.HealthFacilities
                 .Include(x => x.HealthFacilityTypes).ThenInclude(x => x.FacilityType)
                 .Include(x => x.FacilityReviews)
                 .Where(x => x.HealthFacilityTypes.Any(y => y.FacilityType.Id == healthFacilityType))
-                .Select(x => new HealthFacilityViewModel()
+                .Select(x => new HealthFacilityDto()
                 {
                     HealthFacility = x,
                     AverageRating = x.FacilityReviews.Select(y => (y.Question1Score + y.Question2Score + y.Question3Score + y.Question4Score) / 4).Sum() / x.FacilityReviews.Count()

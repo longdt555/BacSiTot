@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using Lib.Data.Entity;
 using Lib.Repository.Dto.Results;
 
 namespace Lib.Repository.Dto
 {
-    public class HealthFacilityViewModel
+    public class HealthFacilityDto
     {
         public HealthFacilityModel HealthFacility { get; set; }
         public FacilityTypeModel FacilityType { get; set; }
@@ -16,7 +17,5 @@ namespace Lib.Repository.Dto
         public int ThreeStars { get; set; }
         public int FourStars { get; set; }
         public int FiveStars { get; set; }
-
-        public SearchModel Search { get; set; }
     }
 }

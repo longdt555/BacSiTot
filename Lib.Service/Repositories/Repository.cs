@@ -10,40 +10,40 @@ namespace Lib.Repository.Repositories
     public class Repository<T> : IRepository<T> where T : class
     {
         protected readonly DbContext Context;
-        internal DbSet<T> dbSet;
+        internal DbSet<T> DbSet;
 
         /// <summary>
-        /// Contructor
+        /// Constructor
         /// </summary>
         /// <param name="context"></param>
         public Repository(DbContext context)
         {
             Context = context;
-            dbSet = context.Set<T>();
+            DbSet = context.Set<T>();
         }
 
         public void Add(T entity)
         {
-            dbSet.Add(entity);
+            DbSet.Add(entity);
         }
 
         public T Get(object id)
         {
-            return dbSet.Find(id);
+            return DbSet.Find(id);
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> fillter = null, Func<IEnumerable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IEnumerable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
         {
-            IQueryable<T> query = dbSet;
+            IQueryable<T> query = DbSet;
 
-            if (fillter != null)
+            if (filter != null)
             {
-                query = query.Where(fillter);
+                query = query.Where(filter);
             }
-            // Include properties will be comma seperated
+            // Include properties will be comma separated
             if (includeProperties != null)
             {
-                foreach (var inlcudeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                foreach (var includeProperty in includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     query = query.Include(includeProperties);
                 }
@@ -57,18 +57,18 @@ namespace Lib.Repository.Repositories
             return query.ToList();
         }
 
-        public T GetFirstOrDefault(Expression<Func<T, bool>> fillter = null, string includeProperties = null)
+        public T GetFirstOrDefault(Expression<Func<T, bool>> filter = null, string includeProperties = null)
         {
-            IQueryable<T> query = dbSet;
+            IQueryable<T> query = DbSet;
 
-            if (fillter != null)
+            if (filter != null)
             {
-                query = query.Where(fillter);
+                query = query.Where(filter);
             }
-            // Include properties will be comma seperated
+            // Include properties will be comma separated
             if (includeProperties != null)
             {
-                foreach (var inlcudeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                foreach (var includeProperty in includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     query = query.Include(includeProperties);
                 }
@@ -78,7 +78,7 @@ namespace Lib.Repository.Repositories
         }
         public void Update(T entity)
         {
-            dbSet.Update(entity);
+            DbSet.Update(entity);
         }
         //public void Remove(object id)
         //{

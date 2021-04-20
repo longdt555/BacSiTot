@@ -17,12 +17,12 @@ namespace Lib.Repository.Repositories.IRepository
         /// <summary>
         /// Get all
         /// </summary>
-        /// <param name="fillter"></param>
+        /// <param name="filter"></param>
         /// <param name="orderBy"></param>
         /// <param name="includeProperties"></param>
         /// <returns></returns>
         IEnumerable<T> GetAll(
-            Expression<Func<T, bool>> fillter = null,
+            Expression<Func<T, bool>> filter = null,
             Func<IEnumerable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = null
             );
@@ -30,11 +30,11 @@ namespace Lib.Repository.Repositories.IRepository
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="fillter"></param>
+        /// <param name="filter"></param>
         /// <param name="includeProperties"></param>
         /// <returns></returns>
         T GetFirstOrDefault(
-            Expression<Func<T, bool>> fillter = null,
+            Expression<Func<T, bool>> filter = null,
             string includeProperties = null
             );
 
@@ -43,17 +43,9 @@ namespace Lib.Repository.Repositories.IRepository
         /// </summary>
         /// <param name="entity"></param>
         void Add(T entity);
-        void Update(T entity);
-        /// <summary>
-        /// Remove an object by id
-        /// </summary>
-        /// <param name="id"></param>
-        //void Remove(object id);
-
-        /// <summary>
-        /// Remove an object
-        /// </summary>
-        /// <param name="entity"></param>
+        /*
+                void Update(T entity);
+        */
         //void Remove(T entity);
     }
 }

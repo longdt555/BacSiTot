@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Lib.Data.Entity;
+using Lib.Repository.Dto;
 
 namespace Lib.Repository.Repositories.IRepository
 {
     public interface IHealthFacilityRepository : IRepository<HealthFacilityModel>
     {
-        HealthFacilityViewModel GetById(Guid id);
-        IEnumerable<HealthFacilityViewModel> GetTopHealthFacilityByAverageRating(int take, Guid healthFacilityType);
+        HealthFacilityDto GetById(Guid id);
+        IEnumerable<HealthFacilityDto> GetTopHealthFacilityByAverageRating(int take, Guid healthFacilityType);
     }
 }
