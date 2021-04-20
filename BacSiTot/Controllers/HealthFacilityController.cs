@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using BacSiTot.Helpers;
 using Lib.Repository.Dto.Parameters;
 using Lib.Repository.Repositories.IRepository;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +17,11 @@ namespace BacSiTot.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-
-        [Route("{id}")]
+        
+        [HttpGet("{id}")]
         public IActionResult Index(string id)
         {
+            var response = new ApiResponse();
             var result = _unitOfWork.HealthcareFacility.GetById(Guid.Parse(id));
 
             result.FacilityReviews = _unitOfWork.FacilityReview.GetAllByHealthFacilityId(new ModelSearchParameter<FacilityReviewParam>
