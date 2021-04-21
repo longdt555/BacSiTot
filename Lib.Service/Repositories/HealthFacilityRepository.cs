@@ -22,13 +22,12 @@ namespace Lib.Repository.Repositories
         {
             var data = _db.HealthFacilities
                 .Include(x => x.FacilityReviews)
-                .Include(x =>x.HealthFacilityTypes).ThenInclude(x =>x.FacilityType)
+                .Include(x => x.HealthFacilityTypes).ThenInclude(x => x.FacilityType)
                 .FirstOrDefault(x => x.Id.Equals(id));
 
             return data != null
                 ? new HealthFacilityDto()
                 {
-                    FacilityType = data.HealthFacilityTypes.FirstOrDefault()?.FacilityType,
                     HealthFacility = data,
                     TotalReviews = data.FacilityReviews.Count(),
                     AverageRating = !data.FacilityReviews.Any()

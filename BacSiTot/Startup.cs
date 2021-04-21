@@ -56,7 +56,7 @@ namespace BacSiTot
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             #endregion
 
-            #region swagger configuration
+            #region Swagger configuration
 
             services.AddSwaggerGen(c =>
             {
@@ -115,7 +115,7 @@ namespace BacSiTot
             #endregion
 
             #region database context
-            services.AddDbContext<ApplicationDbContext>(item => item.UseMySQL(Configuration.GetConnectionString("BacSiTot-Conn"))); //context
+            services.AddDbContext<ApplicationDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("BacSiTot-Conn"))); //context
             #endregion
 
             #region configure jwt authentication

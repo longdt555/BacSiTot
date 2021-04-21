@@ -8,7 +8,7 @@ namespace Lib.Data.Entity
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public int FacilityClassificationId { get; set; } // 0: hospital, 1= clinic, 2= medical service facility
+        public string FacilityClassificationId { get; set; } //  hospital, clinic,medical service facility
         public virtual IEnumerable<HealthFacilityTypeModel> HealthFacilityTypes { get; set; }
 
     }
