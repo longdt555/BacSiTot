@@ -5,6 +5,7 @@ namespace Lib.Repository.Dto
     public class HealthFacilityDto
     {
         public HealthFacilityModel HealthFacility { get; set; }
+        public FacilityTypeModel FacilityType { get; set; }
         public int TotalReviews { get; set; } = 0;
         public double AverageRating { get; set; }
         public int OneStar { get; set; }

@@ -18,6 +18,11 @@ namespace Lib.Repository.Repositories
             _db = db;
         }
 
+        /// <summary>
+        /// Get health facility by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>HealthFacilityDto</returns>
         public HealthFacilityDto GetById(Guid id)
         {
             var data = _db.HealthFacilities
@@ -52,9 +57,14 @@ namespace Lib.Repository.Repositories
                 : null;
         }
 
+        /// <summary>
+        /// get top of health facility order by descending average rating
+        /// </summary>
+        /// <param name="take"></param>
+        /// <param name="healthFacilityType"></param>
+        /// <returns>HealthFacilityDto</returns>
         public IEnumerable<HealthFacilityDto> GetTopHealthFacility(int take, Guid healthFacilityType)
         {
-
             var data = _db.HealthFacilities
                 .Include(x => x.HealthFacilityTypes).ThenInclude(x => x.FacilityType)
                 .Include(x => x.FacilityReviews)
@@ -62,7 +72,11 @@ namespace Lib.Repository.Repositories
                 .Select(x => new HealthFacilityDto()
                 {
                     HealthFacility = x,
-                    AverageRating = x.FacilityReviews.Select(y => (y.Question1Score + y.Question2Score + y.Question3Score + y.Question4Score) / 4).Sum() / x.FacilityReviews.Count()
+                    FacilityType = x.HealthFacilityTypes.FirstOrDefault().FacilityType,
+                    AverageRating =
+                        x.FacilityReviews.Select(y =>
+                            (y.Question1Score + y.Question2Score + y.Question3Score + y.Question4Score) / 4).Sum() /
+                        x.FacilityReviews.Count()
                 }).OrderByDescending(x => x.AverageRating).Take(take);
             return data;
         }

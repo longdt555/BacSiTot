@@ -32,7 +32,8 @@ namespace Lib.Repository.Repositories
             return DbSet.Find(id);
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IEnumerable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null,
+            Func<IEnumerable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
         {
             IQueryable<T> query = DbSet;
 
@@ -40,21 +41,12 @@ namespace Lib.Repository.Repositories
             {
                 query = query.Where(filter);
             }
+
             // Include properties will be comma separated
-            if (includeProperties != null)
-            {
-                foreach (var includeProperty in includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    query = query.Include(includeProperties);
-                }
-            }
+            if (includeProperties == null) return orderBy != null ? orderBy(query).ToList() : query.ToList();
+            query = includeProperties.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Aggregate(query, (current, includeProperty) => current.Include(includeProperties));
 
-            if (orderBy != null)
-            {
-                return orderBy(query).ToList();
-            }
-
-            return query.ToList();
+            return orderBy != null ? orderBy(query).ToList() : query.ToList();
         }
 
         public T GetFirstOrDefault(Expression<Func<T, bool>> filter = null, string includeProperties = null)
@@ -65,17 +57,14 @@ namespace Lib.Repository.Repositories
             {
                 query = query.Where(filter);
             }
+
             // Include properties will be comma separated
-            if (includeProperties != null)
-            {
-                foreach (var includeProperty in includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    query = query.Include(includeProperties);
-                }
-            }
+            if (includeProperties == null) return query.FirstOrDefault();
+            query = includeProperties.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Aggregate(query, (current, includeProperty) => current.Include(includeProperties));
 
             return query.FirstOrDefault();
         }
+
         public void Update(T entity)
         {
             DbSet.Update(entity);

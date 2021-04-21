@@ -12,7 +12,5 @@ namespace Lib.Repository.Repositories
         {
             _db = db;
         }
-
-        
     }
 }

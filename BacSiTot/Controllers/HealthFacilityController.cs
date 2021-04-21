@@ -34,7 +34,7 @@ namespace BacSiTot.Controllers
         {
             var response = new ApiResponse();
             var random = new Random();
-            var facilityTypes = _unitOfWork.FacilityType.GetAll().Select(x => x.Id).ToList();
+            var facilityTypes = _unitOfWork.FacilityType.GetAll().Select(x => x.Id).ToList(); // get all facility type ids
             var index = random.Next(facilityTypes.Count());
             var result = _unitOfWork.HealthcareFacility.GetTopHealthFacility(5, facilityTypes[index]);
             response.SetStatusSuccess();

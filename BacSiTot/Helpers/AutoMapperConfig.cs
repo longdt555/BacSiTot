@@ -6,7 +6,6 @@ namespace BacSiTot.Helpers
     {
         public AutoMapperConfig()
         {
-          
         }
     }
 }
