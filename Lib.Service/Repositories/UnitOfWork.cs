@@ -14,6 +14,7 @@ namespace Lib.Repository.Repositories
             HealthcareFacility = new HealthFacilityRepository(_db);
             HealthFacilityService = new HealthFacilityServiceRepository(_db);
             Diseases = new DiseasesRepository(_db);
+            FacilityType = new FacilityTypeRepository(_db);
         }
 
 
@@ -23,6 +24,7 @@ namespace Lib.Repository.Repositories
         public IFacilityReviewRepository FacilityReview { get; private set; }
         public IHealthFacilityServiceRepository HealthFacilityService { get; private set; }
         public IDiseasesRepository Diseases { get; private set; }
+        public IFacilityTypeRepository FacilityType { get; private set; }
 
         #endregion
 

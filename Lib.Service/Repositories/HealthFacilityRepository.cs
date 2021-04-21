@@ -52,7 +52,7 @@ namespace Lib.Repository.Repositories
                 : null;
         }
 
-        public IEnumerable<HealthFacilityDto> GetTopHealthFacilityByAverageRating(int take, Guid healthFacilityType)
+        public IEnumerable<HealthFacilityDto> GetTopHealthFacility(int take, Guid healthFacilityType)
         {
 
             var data = _db.HealthFacilities

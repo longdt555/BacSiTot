@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lib.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210421120509_Add-SeedData")]
-    partial class AddSeedData
+    [Migration("20210421184156_Db-Initial")]
+    partial class DbInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,43 @@ namespace Lib.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Diseases");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("853fe502-833d-4027-a8a5-14ffe71901c7"),
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            IsDeleted = false,
+                            Name = "Tụy"
+                        },
+                        new
+                        {
+                            Id = new Guid("d9a2ad86-fa30-4ae4-a657-fe4d70a03100"),
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            IsDeleted = false,
+                            Name = "Cột sống"
+                        },
+                        new
+                        {
+                            Id = new Guid("450e798f-160e-47d0-9de4-8cab976605ef"),
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            IsDeleted = false,
+                            Name = "Trĩ"
+                        },
+                        new
+                        {
+                            Id = new Guid("f6b123b7-4c61-4f53-be12-aa9bf6a6c0f9"),
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            IsDeleted = false,
+                            Name = "Tim"
+                        },
+                        new
+                        {
+                            Id = new Guid("8e424064-c4ea-4d27-ab24-99febc863915"),
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            IsDeleted = false,
+                            Name = "Thận"
+                        });
                 });
 
             modelBuilder.Entity("Lib.Data.Entity.FacilityReviewModel", b =>
@@ -265,6 +302,68 @@ namespace Lib.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("HealthFacility");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b7f7291c-6c11-4eb3-807a-43eff567df74"),
+                            Address = "KĐT Time City",
+                            BannerUrl = "bannerDetail.png",
+                            Bio = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+                            Commune = "458 Minh Khai",
+                            CreatedDate = new DateTime(2021, 4, 22, 1, 41, 55, 866, DateTimeKind.Local).AddTicks(5578),
+                            Description = "Bệnh viện hàng đầu việt nam",
+                            District = "Hai Bà Trưng",
+                            FanPage = "Vinmec International Hospital",
+                            IsDeleted = false,
+                            LogoUrl = "logoHos.png",
+                            Name = "Bệnh viện Đa khoa quốc tế Vinmec",
+                            PhoneNumber = "(024) 36 686868",
+                            Province = "Hà Nội",
+                            ThumbnailImageUrl = "Frame 548.png",
+                            Website = "https//www.vinmec.com",
+                            WorkingTime = "8h00 - 20h00"
+                        },
+                        new
+                        {
+                            Id = new Guid("9ac495b8-8f2a-4977-ad8b-bf47f52d7585"),
+                            Address = "KĐT Time City",
+                            BannerUrl = "bannerDetail.png",
+                            Bio = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+                            Commune = "458 Minh Khai",
+                            CreatedDate = new DateTime(2021, 4, 22, 1, 41, 55, 867, DateTimeKind.Local).AddTicks(8594),
+                            Description = "Bệnh viện hàng đầu việt nam",
+                            District = "Hai Bà Trưng",
+                            FanPage = "Vinmec International Hospital",
+                            IsDeleted = false,
+                            LogoUrl = "logoHos.png",
+                            Name = "Phòng khám Đa khoa Hoàng Long",
+                            PhoneNumber = "(024) 36 686868",
+                            Province = "Hà Nội",
+                            ThumbnailImageUrl = "Frame 548.png",
+                            Website = "https//www.vinmec.com",
+                            WorkingTime = "8h00 - 20h00"
+                        },
+                        new
+                        {
+                            Id = new Guid("181049cd-5e5b-4393-adfd-9265b0b28088"),
+                            Address = "KĐT Time City",
+                            BannerUrl = "bannerDetail.png",
+                            Bio = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+                            Commune = "458 Minh Khai",
+                            CreatedDate = new DateTime(2021, 4, 22, 1, 41, 55, 867, DateTimeKind.Local).AddTicks(8655),
+                            Description = "Bệnh viện hàng đầu việt nam",
+                            District = "Hai Bà Trưng",
+                            FanPage = "Vinmec International Hospital",
+                            IsDeleted = false,
+                            LogoUrl = "logoHos.png",
+                            Name = "Cơ sở dịch vụ kính thuốc tư nhân Thiên Thanh",
+                            PhoneNumber = "(024) 36 686868",
+                            Province = "Hà Nội",
+                            ThumbnailImageUrl = "Frame 548.png",
+                            Website = "https//www.vinmec.com",
+                            WorkingTime = "8h00 - 20h00"
+                        });
                 });
 
             modelBuilder.Entity("Lib.Data.Entity.HealthFacilityServiceModel", b =>
@@ -319,6 +418,29 @@ namespace Lib.Data.Migrations
                     b.HasIndex("HealthFacilityId");
 
                     b.ToTable("HealthFacilityType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("853fe502-833d-4027-a8a5-14ffe71901c7"),
+                            FacilityTypeId = new Guid("479d14e9-68da-4a06-abba-f6b4773389b2"),
+                            HealthFacilityId = new Guid("b7f7291c-6c11-4eb3-807a-43eff567df74"),
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = new Guid("54ab21c7-caf4-4b30-882f-40d7bb42fb0c"),
+                            FacilityTypeId = new Guid("4df45d9b-53cc-46ea-8bb6-4cc420c5a35d"),
+                            HealthFacilityId = new Guid("9ac495b8-8f2a-4977-ad8b-bf47f52d7585"),
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = new Guid("b190e392-1333-42c8-a3db-461116d3020f"),
+                            FacilityTypeId = new Guid("a6cb5893-fa04-4b87-8d02-6a8eb4d80a45"),
+                            HealthFacilityId = new Guid("181049cd-5e5b-4393-adfd-9265b0b28088"),
+                            IsDeleted = false
+                        });
                 });
 
             modelBuilder.Entity("Lib.Data.Entity.MasterDataModel", b =>

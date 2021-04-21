@@ -8,6 +8,6 @@ namespace Lib.Repository.Repositories.IRepository
     public interface IHealthFacilityRepository : IRepository<HealthFacilityModel>
     {
         HealthFacilityDto GetById(Guid id);
-        IEnumerable<HealthFacilityDto> GetTopHealthFacilityByAverageRating(int take, Guid healthFacilityType);
+        IEnumerable<HealthFacilityDto> GetTopHealthFacility(int take, Guid healthFacilityType);
     }
 }

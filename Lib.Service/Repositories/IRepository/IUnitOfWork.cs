@@ -8,6 +8,7 @@ namespace Lib.Repository.Repositories.IRepository
         IFacilityReviewRepository FacilityReview { get; }
         IHealthFacilityServiceRepository HealthFacilityService { get; }
         IDiseasesRepository Diseases { get; }
+        IFacilityTypeRepository FacilityType { get; }
 
 
         #region log
