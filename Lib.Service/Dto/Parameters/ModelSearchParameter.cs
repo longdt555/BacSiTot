@@ -1,4 +1,6 @@
-﻿namespace Lib.Repository.Dto.Parameters
+﻿using System;
+
+namespace Lib.Repository.Dto.Parameters
 {
     public class ModelSearchParameter<T>
     {
@@ -10,6 +12,6 @@
 
     public class FacilityReviewParam
     {
-        public string HealthFacilityId { get; set; }
+        public Guid HealthFacilityId { get; set; }
     }
 }

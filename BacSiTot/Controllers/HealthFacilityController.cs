@@ -20,10 +20,10 @@ namespace BacSiTot.Controllers
         }
 
         [HttpGet("get-by-id/{id}")]
-        public IActionResult GetById(string id)
+        public IActionResult GetById(Guid id)
         {
             var response = new ApiResponse();
-            var result = _unitOfWork.HealthcareFacility.GetById(Guid.TryParse(id, out var idGuid) ? idGuid : Guid.Empty);
+            var result = _unitOfWork.HealthcareFacility.GetById(id);
             response.SetStatusSuccess();
             response.SetData(result);
             return Ok(result);
@@ -34,7 +34,8 @@ namespace BacSiTot.Controllers
         {
             var response = new ApiResponse();
             var random = new Random();
-            var facilityTypes = _unitOfWork.FacilityType.GetAll().Select(x => x.Id).ToList(); // get all facility type ids
+            var facilityTypes =
+                _unitOfWork.FacilityType.GetAll().Select(x => x.Id).ToList(); // get all facility type ids
             var index = random.Next(facilityTypes.Count());
             var result = _unitOfWork.HealthcareFacility.GetTopHealthFacility(5, facilityTypes[index]);
             response.SetStatusSuccess();

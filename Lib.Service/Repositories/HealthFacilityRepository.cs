@@ -31,9 +31,38 @@ namespace Lib.Repository.Repositories
                 .FirstOrDefault(x => x.Id.Equals(id));
 
             return data != null
-                ? new HealthFacilityDto()
+                ? new HealthFacilityDto
                 {
-                    HealthFacility = data,
+                    FacilityType = data.HealthFacilityTypes.FirstOrDefault()?.FacilityType != null ? new FacilityTypeModel()
+                    {
+                        Id = data.HealthFacilityTypes.FirstOrDefault().FacilityType.Id,
+                        Name = data.HealthFacilityTypes.FirstOrDefault()?.FacilityType.Name,
+                        Description = data.HealthFacilityTypes.FirstOrDefault()?.FacilityType.Description,
+                        FacilityClassificationId = data.HealthFacilityTypes.FirstOrDefault()?.FacilityType.FacilityClassificationId
+                    } : null,
+                    HealthFacility = new HealthFacilityModel()
+                    {
+                        Id = data.Id,
+                        Name = data.Name,
+                        Address = data.Address,
+                        District = data.District,
+                        Province = data.Province,
+                        Commune = data.Commune,
+                        BannerUrl = data.Address,
+                        Bio = data.Bio,
+                        Description = data.Description,
+                        FanPage = data.FanPage,
+                        CreatedBy = data.CreatedBy,
+                        CreatedDate = data.CreatedDate,
+                        PhoneNumber = data.PhoneNumber,
+                        LogoUrl = data.LogoUrl,
+                        ThumbnailImageUrl = data.ThumbnailImageUrl,
+                        IsDeleted = data.IsDeleted,
+                        UpdatedBy = data.UpdatedBy,
+                        UpdatedDate = data.UpdatedDate,
+                        Website = data.Website,
+                        WorkingTime = data.WorkingTime
+                    },
                     TotalReviews = data.FacilityReviews.Count(),
                     AverageRating = !data.FacilityReviews.Any()
                         ? 0

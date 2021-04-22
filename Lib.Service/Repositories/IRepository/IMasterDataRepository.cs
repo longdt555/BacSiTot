@@ -2,8 +2,7 @@
 
 namespace Lib.Repository.Repositories.IRepository
 {
-    public interface IDiseasesRepository : IRepository<DiseasesModel>
+    public interface IMasterDataRepository : IRepository<MasterDataModel>
     {
-
     }
 }

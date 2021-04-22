@@ -41,6 +41,9 @@ namespace BacSiTot
             #region Middleware services
 
             services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(60); });
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
             #region Allow-Orgin
 

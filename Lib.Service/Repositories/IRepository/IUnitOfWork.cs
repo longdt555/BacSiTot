@@ -9,6 +9,7 @@ namespace Lib.Repository.Repositories.IRepository
         IHealthFacilityServiceRepository HealthFacilityService { get; }
         IDiseasesRepository Diseases { get; }
         IFacilityTypeRepository FacilityType { get; }
+        IMasterDataRepository MasterData{ get; }
 
 
         #region log
